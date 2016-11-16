@@ -1,31 +1,56 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="com.mybatis3.mappers.StudentMapper">
-	
-	<resultMap type="Student" id="StudentResult">
-		<id 	property="studId" column="stud_id"/>
-		<result property="name" column="name"/>
-		<result property="email" column="email"/>
-		<result property="dob" column="dob"/>
-	</resultMap>
-  
-  	<select id="findAllStudents" resultMap="StudentResult">
-    	select * from Students
+    <resultMap type="Student" id="StudentResult">
+        <id property="studId" column="stud_id"/>
+        <result property="name" column="name"/>
+        <result property="email" column="email"/>
+        <result property="dob" column="dob"/>
+    </resultMap>
+    <select id="findAllStudents" resultMap="StudentResult">
+    	SELECT
+    	  *
+    	FROM
+    	  students
   	</select>
-  	
-  	<select id="findStudentById" parameterType="int" resultType="Student">
-    	select stud_id as studId, name, email, dob from Students where stud_id=#{studId}
+
+    <select id="findStudentById" parameterType="int" resultType="Student">
+    	SELECT
+    	  	stud_id AS studId,
+    	  	name,
+    	  	email,
+    	  	dob
+    	FROM
+    	  	students
+    	WHERE
+    	  	stud_id = #{studId}
   	</select>
-  	
-  	<insert id="insertStudent" parameterType="Student">
-  		INSERT INTO STUDENTS(STUD_ID,NAME,EMAIL,DOB) VALUES(#{studId},#{name},#{email},#{dob})
+
+    <insert id="insertStudent" parameterType="Student">
+  		INSERT INTO
+  		  	students (
+  		    	stud_id,
+  		    	name,
+  		    	email,
+  		    	dob
+  		  ) VALUES(
+              	#{studId},
+              	#{name},
+              	#{email},
+              	#{dob}
+  		)
   	</insert>
-  	
-  	<update id="updateStudent" parameterType="Student">
-  		UPDATE STUDENTS SET NAME=#{name}, EMAIL=#{email}, DOB=#{dob} WHERE STUD_ID=#{studId}
+    <update id="updateStudent" parameterType="Student">
+  		UPDATE
+  		  students
+  		SET
+  		  name = #{name},
+  		  email = #{email},
+  		  dob = #{dob}
+  		WHERE
+  		  stud_id = #{studId}
   	</update>
-  	
 </mapper>
