@@ -1,31 +1,24 @@
 package com.mybatis3.mappers;
 
+import com.mybatis3.domain.Student;
+
 import java.util.List;
 import java.util.Map;
 
-import com.mybatis3.domain.Student;
+public interface StudentMapper {
 
+    List<Student> findAllStudents();
 
+    Student findStudentById(Integer id);
 
-/**
- * @author Siva
- *
- */
-public interface StudentMapper
-{
+    Student selectStudentWithAddress(int id);
 
-	List<Student> findAllStudents();
+    void insertStudent(Student student);
 
-	Student findStudentById(Integer id);
+    void insertStudentWithMap(Map<String, Object> map);
 
-	Student selectStudentWithAddress(int id);
-	
-	void insertStudent(Student student);
-	
-	void insertStudentWithMap(Map<String, Object> map);
+    void updateStudent(Student student);
 
-	void updateStudent(Student student);
-	
-	int deleteStudent(int id);
-	
+    int deleteStudent(int id);
+
 }

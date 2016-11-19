@@ -1,11 +1,11 @@
-*.jar
-*.war
-*.ear
-*.class
+**/*.jar
+**/*.war
+**/*.ear
+**/*.class
 
-*.DS_Store
+**/*.DS_Store
 
-.idea
-*.iml
-target
+**/.idea
+**/*.iml
+**/target
 
